@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 開発者モード(デバッグしたい時にはコメント外してください。ユーザーのエラーページが無効にできます) -->
+ 	<!-- <constant name="struts.devMode" value="true" /> -->
+ 	<!-- strutsタグがtableになるのを無効 -->
+ 	<constant name="struts.ui.theme" value="simple" />
+	<package name="com.internousdev.blue.action" extends="struts-default">
+
+		<!-- ユーザー登録機能 -->
+		<action name="CreateUserAction" class="com.internousdev.blue.action.CreateUserAction" method="execute">
+			<result name="success">createUser.jsp</result>
+		</action>
+		<action name="CreateUserConfirmAction" class="com.internousdev.blue.action.CreateUserConfirmAction" method="execute">
+			<result name="success">createUserConfirm.jsp</result>
+			<result name="error">createUser.jsp</result>
+		</action>
+		<action name="CreateUserCompleteAction" class="com.internousdev.blue.action.CreateUserCompleteAction" method="execute">
+			<result name="success">createUserComplete.jsp</result>
+			<result name="error">systemError.html</result>
+		</action>
+
+		<!-- ログイン認証機能 -->
+		<action name="GoLoginAction" class="com.internousdev.blue.action.GoLoginAction" method="execute">
+			<result name="success">login.jsp</result>
+			<result name="sessionTimeout">sessionError.jsp</result>
+		</action>
+		<action name="LoginAction" class="com.internousdev.blue.action.LoginAction" method="execute">
+			<result name="success">home.jsp</result>
+			<result name="cart">cart.jsp</result>
+			<result name="DBError">systemError.html</result>
+			<result name="error">login.jsp</result>
+			<result name="sessionTimeout">sessionError.jsp</result>
+		</action>
+
+		<!-- パスワード再設定機能 -->
+		<action name="ResetPasswordAction" class="com.internousdev.blue.action.ResetPasswordAction" method="execute">
+			<result name="success">resetPassword.jsp</result>
+		</action>
+		<action name="ResetPasswordConfirmAction" class="com.internousdev.blue.action.ResetPasswordConfirmAction" method="execute">
+			<result name="success">resetPasswordConfirm.jsp</result>
+			<result name="error">resetPassword.jsp</result>
+		</action>
+		<action name="ResetPasswordCompleteAction" class="com.internousdev.blue.action.ResetPasswordCompleteAction" method="execute">
+			<result name="success">resetPasswordComplete.jsp</result>
+			<result name="error">systemError.html</result>
+		</action>
+
+		<!-- 商品一覧機能＆商品詳細機能 -->
+		<action name="ProductListAction" class="com.internousdev.blue.action.ProductListAction" method="execute">
+			<result name="success">productList.jsp</result>
+		</action>
+		<action name="ProductDetailsAction" class="com.internousdev.blue.action.ProductDetailsAction" method="execute">
+			<result name="success">productDetails.jsp</result>
+		</action>
+
+		<!-- 商品検索機能 -->
+		<action name="SearchItemAction" class="com.internousdev.blue.action.SearchItemAction" method="execute">
+			<result name="success">productList.jsp</result>
+		</action>
+		<action name="HomeAction" class="com.internousdev.blue.action.HomeAction" method="execute">
+			<result name="success">home.jsp</result>
+		</action>
+
+		<!-- カート機能 -->
+		<action name="AddCartAction" class="com.internousdev.blue.action.AddCartAction" method="execute">
+			<result name="success">cart.jsp</result>
+			<result name="error">systemError.html</result>
+			<result name="sessionTimeout">sessionError.jsp</result>
+		</action>
+		<action name="CartAction" class="com.internousdev.blue.action.CartAction" method="execute">
+			<result name="success">cart.jsp</result>
+			<result name="sessionTimeout">sessionError.jsp</result>
+		</action>
+		<action name="DeleteCartAction" class="com.internousdev.blue.action.DeleteCartAction" method="execute">
+			<result name="success">cart.jsp</result>
+			<result name="error">systemError.html</result>
+			<result name="sessionTimeout">sessionError.jsp</result>
+		</action>
+
+		<!-- 宛先情報選択機能 -->
+		<action name="SettlementConfirmAction" class="com.internousdev.blue.action.SettlementConfirmAction" method="execute">
+			<result name="success">settlementConfirm.jsp</result>
+			<result name="login">login.jsp</result>
+		</action>
+		<action name="DeleteDestinationAction" class="com.internousdev.blue.action.DeleteDestinationAction" method="execute">
+			<result name="success">settlementConfirm.jsp</result>
+			<result name="error">systemError.html</result>
+			<result name="sessionTimeout">sessionError.jsp</result>
+		</action>
+
+		<!-- 宛先情報登録機能 -->
+		<action name="CreateDestinationAction" class="com.internousdev.blue.action.CreateDestinationAction" method="execute">
+			<result name="success">createDestination.jsp</result>
+			<result name="sessionTimeout">sessionError.jsp</result>
+		</action>
+		<action name="CreateDestinationConfirmAction" class="com.internousdev.blue.action.CreateDestinationConfirmAction" method="execute">
+			<result name="success">createDestinationConfirm.jsp</result>
+			<result name="error">createDestination.jsp</result>
+			<result name="sessionTimeout">sessionError.jsp</result>
+		</action>
+		<action name="CreateDestinationCompleteAction" class="com.internousdev.blue.action.CreateDestinationCompleteAction" method="execute">
+			<result name="success">createDestinationComplete.jsp</result>
+			<result name="error">systemError.html</result>
+			<result name="sessionTimeout">sessionError.jsp</result>
+		</action>
+
+		<!-- 決済完了機能 -->
+		<action name="SettlementCompleteAction" class="com.internousdev.blue.action.SettlementCompleteAction" method="execute">
+			<result name="success">settlementComplete.jsp</result>
+			<result name="error">systemError.html</result>
+			<result name="sessionTimeout">sessionError.jsp</result>
+		</action>
+
+		<!-- マイページ機能 -->
+		<action name="MyPageAction" class="com.internousdev.blue.action.MyPageAction" method="execute">
+			<result name="success">mypage.jsp</result>
+			<result name="sessionTimeout">sessionError.jsp</result>
+		</action>
+
+		<!-- 商品購入履歴機能 -->
+		<action name="PurchaseHistoryAction" class="com.internousdev.blue.action.PurchaseHistoryAction" method="execute">
+			<result name="success">purchaseHistory.jsp</result>
+			<result name="sessionTimeout">sessionError.jsp</result>
+		</action>
+		<action name="DeletePurchaseHistoryAction" class="com.internousdev.blue.action.DeletePurchaseHistoryAction" method="execute">
+			<result name="success">purchaseHistory.jsp</result>
+			<result name="error">systemError.html</result>
+			<result name="sessionTimeout">sessionError.jsp</result>
+		</action>
+
+		<!-- ログアウト機能 -->
+		<action name="LogoutAction" class="com.internousdev.blue.action.LogoutAction" method="execute">
+			<result name="success">index.jsp</result>
+		</action>
+
+	</package>
+</struts>
